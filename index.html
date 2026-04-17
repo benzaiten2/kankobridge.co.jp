@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>合同会社観光ブリッジ / Kanko Bridge LLC</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-text-primary: #1a1a18;
+      --color-text-secondary: #6b6a64;
+      --color-background-primary: #ffffff;
+      --color-border-tertiary: rgba(0,0,0,0.12);
+      --font-sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      --font-serif: Georgia, "Times New Roman", "Hiragino Mincho ProN", serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-text-primary: #e8e6de;
+        --color-text-secondary: #9c9a92;
+        --color-background-primary: #1c1c1a;
+        --color-border-tertiary: rgba(255,255,255,0.1);
+      }
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text-primary);
+      background: var(--color-background-primary);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 0.5px solid var(--color-border-tertiary);
+      position: sticky;
+      top: 0;
+      background: var(--color-background-primary);
+      z-index: 10;
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-text-primary);
+    }
+
+    .hero {
+      padding: 80px 40px 72px;
+      border-bottom: 0.5px solid var(--color-border-tertiary);
+      max-width: 720px;
+    }
+
+    .hero-en {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--color-text-secondary);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1.35;
+      margin-bottom: 20px;
+      font-family: var(--font-serif);
+    }
+
+    .hero p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-text-secondary);
+    }
+
+    section {
+      padding: 64px 40px;
+      border-bottom: 0.5px solid var(--color-border-tertiary);
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--color-border-tertiary);
+      border: 0.5px solid var(--color-border-tertiary);
+      margin-top: 8px;
+    }
+
+    .service-item {
+      background: var(--color-background-primary);
+      padding: 24px 28px;
+    }
+
+    .service-num {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .service-title-ja {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.6;
+      margin-bottom: 4px;
+    }
+
+    .service-title-en {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    .profile-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+
+    .profile-table tr {
+      border-bottom: 0.5px solid var(--color-border-tertiary);
+    }
+
+    .profile-table tr:first-child {
+      border-top: 0.5px solid var(--color-border-tertiary);
+    }
+
+    .profile-table td {
+      padding: 14px 0;
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    .profile-table td:first-child {
+      color: var(--color-text-secondary);
+      width: 160px;
+    }
+
+    .contact-block { margin-top: 8px; }
+
+    .contact-email {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .contact-note {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+    }
+
+    footer {
+      padding: 28px 40px;
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .nav-links { gap: 16px; }
+      .hero { padding: 48px 20px 48px; }
+      .hero h1 { font-size: 24px; }
+      section { padding: 48px 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">観光ブリッジ / Kanko Bridge</div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#profile">Company</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-en">Kanko Bridge LLC</div>
+  <h1>Connecting people,<br>places, and possibilities<br>across Japan.</h1>
+  <p>観光ブリッジは、訪日旅行・観光コンサルティング・インバウンド事業を中心に、地域と世界をつなぐ事業を行います。</p>
+</div>
+
+<section id="services">
+  <div class="section-label">Services / 事業内容</div>
+  <div class="services-grid">
+    <div class="service-item">
+      <div class="service-num">01</div>
+      <div class="service-title-ja">旅行サービス手配業</div>
+      <div class="service-title-en">Travel service arrangement<br>(Travel Service Arranger License)</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">02</div>
+      <div class="service-title-ja">宿泊・運送手配業務</div>
+      <div class="service-title-en">Accommodation &amp; transport<br>arrangement for travel businesses</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">03</div>
+      <div class="service-title-ja">観光・地域振興コンサルティング</div>
+      <div class="service-title-en">Tourism &amp; regional development<br>consulting</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">04</div>
+      <div class="service-title-ja">観光事業の運営支援・業務委託</div>
+      <div class="service-title-en">Tourism business operations<br>support &amp; outsourcing</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">05</div>
+      <div class="service-title-ja">各種イベントの企画・運営</div>
+      <div class="service-title-en">Event planning &amp; management</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">06</div>
+      <div class="service-title-ja">地域資源を活用した事業の企画・運営</div>
+      <div class="service-title-en">Projects utilizing local resources</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">07</div>
+      <div class="service-title-ja">インバウンド関連事業</div>
+      <div class="service-title-en">Inbound tourism<br>planning &amp; operations</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">08</div>
+      <div class="service-title-ja">附帯関連業務</div>
+      <div class="service-title-en">Ancillary &amp; related services</div>
+    </div>
+  </div>
+</section>
+
+<section id="profile">
+  <div class="section-label">Company Profile / 会社概要</div>
+  <table class="profile-table">
+    <tr>
+      <td>会社名</td>
+      <td>合同会社観光ブリッジ<br><span style="font-size:12px;color:var(--color-text-secondary)">Kanko Bridge LLC</span></td>
+    </tr>
+    <tr>
+      <td>設立</td>
+      <td>2026年</td>
+    </tr>
+    <tr>
+      <td>代表社員</td>
+      <td>バンホーン　トッド<br><span style="font-size:12px;color:var(--color-text-secondary)">Todd Van Horne, Representative Director</span></td>
+    </tr>
+    <tr>
+      <td>所在地</td>
+      <td>〒649-2105<br>和歌山県西牟婁郡上富田町朝来２５３７－５７</td>
+    </tr>
+    <tr>
+      <td>主な事業内容</td>
+      <td style="line-height:1.8">旅行サービス手配業、観光コンサルティング、<br>インバウンド事業の企画・運営</td>
+    </tr>
+  </table>
+</section>
+
+<section id="contact">
+  <div class="section-label">Contact / お問い合わせ</div>
+  <div class="contact-block">
+    <div class="contact-email">info@kankobridge.co.jp</div>
+    <div class="contact-note">
+      お問い合わせはメールにてお受けしております。<br>
+      Please contact us by email. We will respond within 3 business days.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 合同会社観光ブリッジ / Kanko Bridge LLC</span>
+  <span>和歌山県西牟婁郡上富田町</span>
+</footer>
+
+</body>
+</html>

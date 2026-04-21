@@ -4,240 +4,342 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>合同会社観光ブリッジ / Kanko Bridge LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --color-text-primary: #1a1a18;
-      --color-text-secondary: #6b6a64;
-      --color-background-primary: #ffffff;
-      --color-border-tertiary: rgba(0,0,0,0.12);
-      --font-sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-      --font-serif: Georgia, "Times New Roman", "Hiragino Mincho ProN", serif;
+      --ink: #1a1916;
+      --ink-mid: #5a5852;
+      --ink-light: #9a9890;
+      --paper: #faf9f6;
+      --paper-warm: #f2f0ea;
+      --rule: rgba(26,25,22,0.12);
+      --accent: #3d6b4f;
+      --font-serif: 'Cormorant Garamond', 'Hiragino Mincho ProN', Georgia, serif;
+      --font-sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+      --max: 1200px;
+      --gutter: clamp(24px, 5vw, 80px);
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --color-text-primary: #e8e6de;
-        --color-text-secondary: #9c9a92;
-        --color-background-primary: #1c1c1a;
-        --color-border-tertiary: rgba(255,255,255,0.1);
-      }
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--font-sans);
-      color: var(--color-text-primary);
-      background: var(--color-background-primary);
+      background: var(--paper);
+      color: var(--ink);
       font-size: 16px;
-      line-height: 1.7;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
     }
 
     nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      border-bottom: 0.5px solid var(--color-border-tertiary);
       position: sticky;
       top: 0;
-      background: var(--color-background-primary);
-      z-index: 10;
+      z-index: 100;
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 var(--gutter);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .nav-logo {
-      font-size: 15px;
+      font-family: var(--font-sans);
+      font-size: 14px;
       font-weight: 500;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      text-decoration: none;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 40px;
+      list-style: none;
     }
 
     .nav-links a {
       font-size: 13px;
-      color: var(--color-text-secondary);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--ink-mid);
       text-decoration: none;
+      transition: color 0.2s;
     }
 
-    .nav-links a:hover {
-      color: var(--color-text-primary);
-    }
+    .nav-links a:hover { color: var(--ink); }
 
     .hero {
-      padding: 80px 40px 72px;
-      border-bottom: 0.5px solid var(--color-border-tertiary);
-      max-width: 720px;
+      padding: clamp(80px, 12vw, 160px) var(--gutter) clamp(80px, 10vw, 140px);
+      max-width: var(--max);
+      margin: 0 auto;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
     }
 
-    .hero-en {
+    .hero-eyebrow {
       font-size: 11px;
-      letter-spacing: 0.12em;
-      color: var(--color-text-secondary);
-      margin-bottom: 16px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      font-weight: 400;
     }
 
     .hero h1 {
-      font-size: 32px;
-      font-weight: 500;
-      line-height: 1.35;
-      margin-bottom: 20px;
       font-family: var(--font-serif);
+      font-size: clamp(42px, 5vw, 72px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--ink);
+      letter-spacing: -0.01em;
     }
 
-    .hero p {
-      font-size: 15px;
-      line-height: 1.8;
-      color: var(--color-text-secondary);
+    .hero-ja {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 2;
+      color: var(--ink-mid);
+      border-left: 2px solid var(--accent);
+      padding-left: 24px;
     }
 
     section {
-      padding: 64px 40px;
-      border-bottom: 0.5px solid var(--color-border-tertiary);
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: clamp(64px, 8vw, 120px) var(--gutter);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 48px;
     }
 
     .section-label {
       font-size: 11px;
-      letter-spacing: 0.12em;
-      color: var(--color-text-secondary);
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-bottom: 32px;
+      color: var(--accent);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       gap: 1px;
-      background: var(--color-border-tertiary);
-      border: 0.5px solid var(--color-border-tertiary);
-      margin-top: 8px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
     }
 
     .service-item {
-      background: var(--color-background-primary);
-      padding: 24px 28px;
+      background: var(--paper);
+      padding: 32px 28px;
+      transition: background 0.2s;
     }
 
+    .service-item:hover { background: var(--paper-warm); }
+
     .service-num {
-      font-size: 11px;
-      color: var(--color-text-secondary);
-      margin-bottom: 8px;
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--rule);
+      line-height: 1;
+      margin-bottom: 16px;
     }
 
     .service-title-ja {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       line-height: 1.6;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
+      color: var(--ink);
     }
 
     .service-title-en {
       font-size: 12px;
-      color: var(--color-text-secondary);
-      line-height: 1.5;
+      color: var(--ink-light);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .profile-tagline {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .profile-desc {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--ink-mid);
     }
 
     .profile-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 8px;
     }
 
-    .profile-table tr {
-      border-bottom: 0.5px solid var(--color-border-tertiary);
-    }
-
-    .profile-table tr:first-child {
-      border-top: 0.5px solid var(--color-border-tertiary);
-    }
+    .profile-table tr { border-bottom: 1px solid var(--rule); }
+    .profile-table tr:first-child { border-top: 1px solid var(--rule); }
 
     .profile-table td {
-      padding: 14px 0;
-      font-size: 14px;
+      padding: 18px 0;
+      font-size: 15px;
       vertical-align: top;
-    }
-
-    .profile-table td:first-child {
-      color: var(--color-text-secondary);
-      width: 160px;
-    }
-
-    .contact-block { margin-top: 8px; }
-
-    .contact-email {
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-
-    .contact-note {
-      font-size: 13px;
-      color: var(--color-text-secondary);
       line-height: 1.7;
     }
 
-    footer {
-      padding: 28px 40px;
+    .profile-table td:first-child {
+      color: var(--ink-light);
+      width: 130px;
       font-size: 12px;
-      color: var(--color-text-secondary);
-      display: flex;
-      justify-content: space-between;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      padding-top: 20px;
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
       align-items: center;
     }
 
+    .contact-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+
+    .contact-email {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3vw, 38px);
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .contact-phone {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--ink-mid);
+      margin-bottom: 24px;
+    }
+
+    .contact-note {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.9;
+    }
+
+    footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 32px var(--gutter);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--ink-light);
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .profile-grid { grid-template-columns: 1fr; gap: 48px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
     @media (max-width: 600px) {
-      nav { padding: 16px 20px; }
-      .nav-links { gap: 16px; }
-      .hero { padding: 48px 20px 48px; }
-      .hero h1 { font-size: 24px; }
-      section { padding: 48px 20px; }
+      .nav-links { gap: 20px; }
       .services-grid { grid-template-columns: 1fr; }
-      footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">観光ブリッジ / Kanko Bridge</div>
-  <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#profile">Company</a>
-    <a href="#contact">Contact</a>
-  </div>
+  <a href="#" class="nav-logo">観光ブリッジ / Kanko Bridge</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#profile">Company</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
 <div class="hero">
-  <div class="hero-en">Kanko Bridge LLC</div>
-  <h1>Connecting people,<br>places, and possibilities<br>across Japan.</h1>
-  <p>観光ブリッジは、訪日旅行・観光コンサルティング・インバウンド事業を中心に、地域と世界をつなぐ事業を行います。</p>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Kanko Bridge LLC — 合同会社観光ブリッジ</div>
+    <h1>Connecting<br>people, places,<br>and possibilities<br>across Japan.</h1>
+  </div>
+  <div class="hero-right">
+    <p class="hero-ja">観光ブリッジは、訪日旅行・観光コンサルティング・インバウンド事業を中心に、地域と世界をつなぐ事業を行います。</p>
+  </div>
 </div>
 
 <section id="services">
-  <div class="section-label">Services / 事業内容</div>
+  <div class="section-header">
+    <span class="section-label">Services / 事業内容</span>
+    <div class="section-rule"></div>
+  </div>
   <div class="services-grid">
     <div class="service-item">
       <div class="service-num">01</div>
       <div class="service-title-ja">旅行サービス手配業</div>
-      <div class="service-title-en">Travel service arrangement<br>(Travel Service Arranger License)</div>
+      <div class="service-title-en">Travel service arrangement (Travel Service Arranger License)</div>
     </div>
     <div class="service-item">
       <div class="service-num">02</div>
       <div class="service-title-ja">宿泊・運送手配業務</div>
-      <div class="service-title-en">Accommodation &amp; transport<br>arrangement for travel businesses</div>
+      <div class="service-title-en">Accommodation &amp; transport arrangement for travel businesses</div>
     </div>
     <div class="service-item">
       <div class="service-num">03</div>
       <div class="service-title-ja">観光・地域振興コンサルティング</div>
-      <div class="service-title-en">Tourism &amp; regional development<br>consulting</div>
+      <div class="service-title-en">Tourism &amp; regional development consulting</div>
     </div>
     <div class="service-item">
       <div class="service-num">04</div>
       <div class="service-title-ja">観光事業の運営支援・業務委託</div>
-      <div class="service-title-en">Tourism business operations<br>support &amp; outsourcing</div>
+      <div class="service-title-en">Tourism business operations support &amp; outsourcing</div>
     </div>
     <div class="service-item">
       <div class="service-num">05</div>
@@ -252,7 +354,7 @@
     <div class="service-item">
       <div class="service-num">07</div>
       <div class="service-title-ja">インバウンド関連事業</div>
-      <div class="service-title-en">Inbound tourism<br>planning &amp; operations</div>
+      <div class="service-title-en">Inbound tourism planning &amp; operations</div>
     </div>
     <div class="service-item">
       <div class="service-num">08</div>
@@ -263,35 +365,51 @@
 </section>
 
 <section id="profile">
-  <div class="section-label">Company Profile / 会社概要</div>
-  <table class="profile-table">
-    <tr>
-      <td>会社名</td>
-      <td>合同会社観光ブリッジ<br><span style="font-size:12px;color:var(--color-text-secondary)">Kanko Bridge LLC</span></td>
-    </tr>
-    <tr>
-      <td>設立</td>
-      <td>2026年</td>
-    </tr>
-    <tr>
-      <td>代表社員</td>
-      <td>バンホーン　トッド<br><span style="font-size:12px;color:var(--color-text-secondary)">Todd Van Horne, Representative Director</span></td>
-    </tr>
-    <tr>
-      <td>所在地</td>
-      <td>〒649-2105<br>和歌山県西牟婁郡上富田町朝来２５３７－５７</td>
-    </tr>
-    <tr>
-      <td>主な事業内容</td>
-      <td style="line-height:1.8">旅行サービス手配業、観光コンサルティング、<br>インバウンド事業の企画・運営</td>
-    </tr>
-  </table>
+  <div class="section-header">
+    <span class="section-label">Company Profile / 会社概要</span>
+    <div class="section-rule"></div>
+  </div>
+  <div class="profile-grid">
+    <div>
+      <p class="profile-tagline">A Japan-based land operator and tourism consultancy bridging local experience with global demand.</p>
+      <p class="profile-desc">Founded in Wakayama Prefecture, Kanko Bridge specializes in travel service arrangement, inbound tourism planning, and regional development consulting — with deep roots in the Kumano region of the Kii Peninsula.</p>
+    </div>
+    <table class="profile-table">
+      <tr>
+        <td>会社名</td>
+        <td>合同会社観光ブリッジ<br><span style="font-size:13px;color:var(--ink-light);font-weight:300">Kanko Bridge LLC</span></td>
+      </tr>
+      <tr>
+        <td>設立</td>
+        <td>2026年</td>
+      </tr>
+      <tr>
+        <td>代表社員</td>
+        <td>バンホーン　トッド<br><span style="font-size:13px;color:var(--ink-light);font-weight:300">Todd Van Horne, Representative Director</span></td>
+      </tr>
+      <tr>
+        <td>所在地</td>
+        <td>〒649-2105<br>和歌山県西牟婁郡上富田町朝来２５３７－５７</td>
+      </tr>
+      <tr>
+        <td>事業内容</td>
+        <td style="font-weight:300">旅行サービス手配業、観光コンサルティング、インバウンド事業の企画・運営</td>
+      </tr>
+    </table>
+  </div>
 </section>
 
 <section id="contact">
-  <div class="section-label">Contact / お問い合わせ</div>
-  <div class="contact-block">
-    <div class="contact-email">info@kankobridge.co.jp</div>
+  <div class="section-header">
+    <span class="section-label">Contact / お問い合わせ</span>
+    <div class="section-rule"></div>
+  </div>
+  <div class="contact-inner">
+    <div>
+      <div class="contact-label">Email</div>
+      <div class="contact-email">info@kankobridge.co.jp</div>
+      <div class="contact-phone">080-2793-2239</div>
+    </div>
     <div class="contact-note">
       お問い合わせはメールにてお受けしております。<br>
       Please contact us by email. We will respond within 3 business days.
@@ -301,7 +419,7 @@
 
 <footer>
   <span>© 2026 合同会社観光ブリッジ / Kanko Bridge LLC</span>
-  <span>和歌山県西牟婁郡上富田町</span>
+  <span>和歌山県西牟婁郡上富田町、和歌山県</span>
 </footer>
 
 </body>
